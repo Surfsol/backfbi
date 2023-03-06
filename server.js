@@ -1,11 +1,11 @@
 const express = require("express");
-const app = express(); //create instance of express server
+const server = express(); //create instance of express server
 const CORS = require("cors");
 const helmet = require("helmet");
 const router = require('./routes.index')
-const 
 //const session = require("express-session") //reads and writes cookies in req, res,  do not use with a cookie-parser
-
+const port = 4500;
+const hostname = '127.0.0.1';
 // const proRouter = require("../routes-models/projects/project-routes");
 // const tecRouter = require("../routes-models/techs/techs-router");
 // const ptRouter = require("../routes-models/pt/pt-router");
@@ -29,10 +29,10 @@ const sessionConfig = {
     saveUninitialized: true //GDPR laws, setting cookies automatically. Should change dynamically if user accepts cookies
 }
 
-app.use(express.json()); // allows express to read .json from body of request
-app.use(CORS());
-app.use(helmet());
-app.use('/data', router)
+server.use(express.json()); // allows express to read .json from body of request
+server.use(CORS());
+server.use(helmet());
+server.use('/', router)
 // server.use(session(sessionConfig))
 // server.use("/projects", proRouter);
 // server.use("/tech", tecRouter);
@@ -44,4 +44,7 @@ app.use('/data', router)
 // server.use("/comments", commentRouter)
 
 
-module.exports = app;
+
+server.listen(port, () => console.log(`🚀 Server ready at http://${hostname}:${port}/`));
+
+module.exports = server;

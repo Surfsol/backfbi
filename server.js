@@ -3,17 +3,8 @@ const server = express(); //create instance of express server
 const CORS = require("cors");
 const helmet = require("helmet");
 const router = require('./routes.index')
-//const session = require("express-session") //reads and writes cookies in req, res,  do not use with a cookie-parser
-const port = 4500;
+const port = 4507;
 const hostname = '127.0.0.1';
-// const proRouter = require("../routes-models/projects/project-routes");
-// const tecRouter = require("../routes-models/techs/techs-router");
-// const ptRouter = require("../routes-models/pt/pt-router");
-// const techsProjectRouter = require("../routes-models/techsProject/techsProject-router")
-// const twilioRouter = require("../routes-models/Twilio/twilio-router");
-// const mailerRouter = require("../routes-models/mailer/mailer-router")
-// const authRouter = require("../routes-models/auth/auth-router")
-// const commentRouter = require('../routes-models/comments/comments-router')
 
 //cookie details
 const sessionConfig = {
@@ -33,17 +24,6 @@ server.use(express.json()); // allows express to read .json from body of request
 server.use(CORS());
 server.use(helmet());
 server.use('/', router)
-// server.use(session(sessionConfig))
-// server.use("/projects", proRouter);
-// server.use("/tech", tecRouter);
-// server.use("/pt", ptRouter);
-// server.use("/techsProject", techsProjectRouter);
-// server.use("/twilio", twilioRouter);
-// server.use("/mailer", mailerRouter)
-// server.use("/auth", authRouter)
-// server.use("/comments", commentRouter)
-
-
 
 server.listen(port, () => console.log(`🚀 Server ready at http://${hostname}:${port}/`));
 
